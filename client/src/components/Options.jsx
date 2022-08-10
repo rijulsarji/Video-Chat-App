@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { SocketContext } from '../socketContext'
+import React, { useContext, useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { SocketContext } from "../Context";
 
 const Options = ({ children }) => {
+  const [idToCall, setIdToCall] = useState("");
 
-  const [idToCall, setIdToCall] = useState("")
+  const { me, callAccepted, callEnded, name, setName, leaveCall, callUser } =
+    useContext(SocketContext);
 
-  const { me, callAccepted, callEnded, name, setName, leaveCall, callUser } = useContext(SocketContext);
-  
   return (
     <div className="option-container">
       <div className="option-before-call">
@@ -22,7 +22,7 @@ const Options = ({ children }) => {
               onChange={(e) => setName(e.target.value)}
             />
             <CopyToClipboard text={me}>
-              <button type={"button"}>Copy your id</button>
+              <button type={"button"}>Copy your ID</button>
             </CopyToClipboard>
           </form>
         </div>
@@ -33,14 +33,18 @@ const Options = ({ children }) => {
             <input
               type={"text"}
               label="ID to call"
-              placeholder='ID to call'
+              placeholder="ID to call"
               value={idToCall}
               onChange={(e) => setIdToCall(e.target.value)}
             />
             {callAccepted && !callEnded ? (
-              <button type="button" onClick={leaveCall}>Hang up</button>
+              <button type="button" onClick={leaveCall}>
+                Hang up
+              </button>
             ) : (
-              <button type='button' onClick={() => callUser(idToCall)}>Call</button>
+              <button type="button" onClick={() => callUser(idToCall)}>
+                Call
+              </button>
             )}
           </form>
         </div>
@@ -48,6 +52,6 @@ const Options = ({ children }) => {
       {children}
     </div>
   );
-}
+};
 
-export default Options
+export default Options;

@@ -59,9 +59,10 @@ body {
     border-radius: 10px;
     max-width: 600px;
 }
-.video video {
+.video-box {
+    min-height: 300px;
     max-height: 400px;
-    max-width: 100%;
+    min-width: 500px;
     padding: 5px;
     padding-bottom: 5px;
     -webkit-transform: scaleX(-1);
@@ -112,5 +113,33 @@ body {
     transition: all 0.15s linear;
 }
 .option-before-call button:hover {
+    background-color: #f94f96;
+}
+
+/* notification.jsx */
+.notification-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.notification-container h3 {
+    font-family: 'Roboto', sans-serif;
+}
+.notification-container button {
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #ff85b8;
+    font-size: 18px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+.notification-container button:hover {
     background-color: #f94f96;
 }
